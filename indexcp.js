@@ -83,7 +83,7 @@ function createCube(rad, color, x, z) {
     colorcord = 0xFACC2E;
   }
 
-  var geometry = new THREE.SphereGeometry(rad, 100, 100);
+  var geometry = new THREE.SphereGeometry(rad, 25, 25);
 	var material = new THREE.MeshPhongMaterial({color: colorcord});
 	var cube = new THREE.Mesh(geometry, material);
 
