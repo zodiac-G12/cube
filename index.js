@@ -70,8 +70,8 @@ var youfirst = [
 
 
 function windSize(){
-  width = window.innerHeight;
-  height = window.innerWidth;
+  height = window.innerHeight;
+  width = window.innerWidth;
 }
 
 
