@@ -1,5 +1,5 @@
 var width = 1000; //window.innerWidth;
-var height = 500; //window.innerHeight;
+var height = 1000; //window.innerHeight;
 var rad = 3;
 var scene;
 var camera;
@@ -253,7 +253,6 @@ function update(){
           if(obj.length > 0){
             if(sphere[obj[0].object.mapx][obj[0].object.mapy].color == 2){
               play(obj[0].object.mapx, obj[0].object.mapy);
-              ai();
             }
             if(controls.autoRotate){ //加速度保持
               controls.autoRotate = false;
@@ -354,7 +353,9 @@ function play(x, y){
     }
   }else{
     skip = 0;
-    showtext();
+    if(firstUserColor != color){
+      ai();
+    }else showtext();
   }
 }
 
@@ -364,9 +365,7 @@ function randkun(){
   var xy = [];
   var k = 0;
   for(var i = 0; i < N; i++){for(var j = 0; j < N; j++){
-    if(sphere[i][j].color == 2){
-      xy[k++] = [i, j];
-    }
+    if(sphere[i][j].color == 2) xy[k++] = [i, j];
   }}
   return xy[getRandomInt(0, xy.length - 1)];
 }
