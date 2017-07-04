@@ -1,5 +1,5 @@
-var width = 1000; //window.innerWidth;
-var height = 1000; //window.innerHeight;
+var width; //window.innerWidth;
+var height; //window.innerHeight;
 var rad = 3;
 var scene;
 var camera;
