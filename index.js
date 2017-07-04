@@ -24,8 +24,17 @@ var skip = 0;
 
 
 
+function windSize(){
+  width = window.innerHeight;
+  height = window.innerWidth;
+}
+
+
 
 function init(){
+
+  windSize(); //Windowサイズ取得
+
   scene = new THREE.Scene();
   camera = new THREE.PerspectiveCamera(100, width / height, 1, 1000);
   controls = new THREE.OrbitControls(camera);
