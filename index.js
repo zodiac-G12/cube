@@ -20,7 +20,52 @@ var flag = 0;
 var tmp;
 var aiList = ["randkun", "semimanabukun", "zodiac", "human"];
 var vsAI = 0;
+var step = 4;
 var skip = 0;
+var luckypoint = [[0, 0], [0, N], [N, 0], [N, N]];
+
+//me = AI
+var mefirst = [
+  [1303, 606, 754, 832, 699, 734, 586, 1295],
+  [625, 378, 676, 542, 863, 699, 435, 616],
+  [637, 689, 286, 1344, 265, 745, 679, 716],
+  [753, 644, 770, 0, 0, 509, 692, 670],
+  [601, 863, 327, 0, 0, 1287, 508, 777],
+  [721, 613, 896, 465, 585, 498, 591, 646],
+  [603, 369, 503, 704, 584, 693, 373, 589],
+  [1314, 598, 676, 557, 502, 608, 1319]
+]
+var youafter = [
+  [-45, -742, -595, -517, -650, -615, -763, -53],
+  [-723, -971, -673, -807, -486, -650, -914, -733],
+  [-712, -363, -1063, -5, -1084, -604, -670, -633],
+  [-596, -705, -579, 0, 0, -840, -657, -679],
+  [-748, -486, -1022, 0, 0, -62, -841, -571],
+  [-628, -736, -453, -884, -764, -851, -758, -700],
+  [-742, -978, -846, -644, -764, -654, -971, -755],
+  [-32, -746, -671, -773, -791, -843, -733, -25]
+]
+
+var meafter = [
+  [1295, 586, 734, 699, 832, 754, 606, 1303],
+  [616, 435, 699, 863, 542, 676, 378, 625],
+  [716, 679, 745, 265, 1344, 286, 986, 637],
+  [670, 692, 509, 0, 0, 770, 644, 753],
+  [777, 508, 1287, 0, 0, 327, 863, 601],
+  [646, 591, 498, 585, 465, 896, 613, 721],
+  [589, 373, 693, 584, 704, 502, 369, 603],
+  [1319, 608, 502, 557, 575, 676, 598, 1314]
+]
+var youfirst = [
+  [-53, -763, -615, -650, -517, -595, -742, -45],
+  [-733, -914, -650, -486, -807, -673, -971, -723],
+  [-633, -670, -604, -1084, -5, -1063, -363, -712],
+  [-679, -657, -840, 0, 0, -579, -705, -596],
+  [-571, -841, -62, 0, 0, -1022, -486, -748],
+  [-700, -758, -851, -764, -884, -453, -736, -628],
+  [-755, -971, -654, -764, -644, -846, -978, -742],
+  [-25, -733, -843, -791, -773, -671, -746, -32]
+]
 
 
 
@@ -210,6 +255,9 @@ function update(){
   }
 
   if(flag == 3){
+
+    window.location.hash = step + "step";
+
     window.onmousemove = function(ev){ //マウスが移動された時
       if(ev.target == renderer.domElement){
         //マウス座標2D変換
@@ -298,6 +346,7 @@ function river(x, y){
   sphere[x][y].color = color;
   sphere[x][y].material.color.setHex(colorcord);
   color *= -1;
+  step++;
 }
 
 
@@ -381,12 +430,63 @@ function randkun(){
 
 
 
+function maxer(){
+  var max;
+  var flag = 0;
+  for(var i = 0; i < N; i++){for(var j = 0; j < N; j++){
+    if(sphere[i][j].color == 2){
+      if(flag++ == 0 || (firstUserColor == -1 && mefirst[max[0]][max[1]] + youafter[max[0]][max[1]] < mefirst[i][j] + youafter[i][j]) || (firstUserColor == 1 && meafter[max[0]][max[1]] + youfirst[max[0]][max[1]] < meafter[i][j] + youfirst[i][j])) max = [i, j];
+    }
+  }}
+  return max;
+}
+
+
+
+function semimanabukun(epsilon){
+  var epsilonMax = 1.0;
+  if(0 < epsilon && epsilon > Math.random()){
+    return randkun();
+  }else return maxer();
+}
+
+
+
+// function epi(){
+//   
+// }
+//
+//
+// function zodiac(){
+//   if(step < 16){
+//     semimanabukun();
+//   }else{
+//     var xy = 0;
+//     for(var i = 0; i < luckypoint.length; i++){
+//       if(sphere[luckypoint[i][0]][luckypoint[i][1]].color == 2){
+//         xy = [[luckypoint[i][0]], [luckypoint[i][1]]];
+//         break;
+//       }
+//     }
+//     if(xy == 0){
+//       
+//     }
+//     return xy;
+//   }
+// }
+
+
+
 function ai(){
   var xy = [];
   if(vsAI == "randkun"){
     xy = randkun();
+  }else if(vsAI == "semimanabukun"){
+    xy = semimanabukun(0.1);
   }
-  play(xy[0], xy[1]);
+  if(vsAI == "human"){
+    showtext();
+  }else play(xy[0], xy[1]);
 }
 
 
