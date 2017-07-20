@@ -78,7 +78,7 @@ function setcolor(color){
 function cubecolorChange(){
   var color = cube.color;
   if(color == 0){
-    setcolor(0xFFFFFF)
+    setcolor(0xFFFFFF);
   }else if(color == 1){
     setcolor(0xFF8000);
   }else if(color == 2){
