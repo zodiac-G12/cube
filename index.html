@@ -10,68 +10,68 @@
   <meta name="Keywords"  content="" />
   <link rel="stylesheet" type="text/css" media="screen,print" href="style.css" />
 
-  <Div Align="center">
-    <h2><span id="command"></span></h2>
-  </Div>
-
-  <Div Align="center">
-    <ul class="nav">
-      <li><a class="btn_e" href="#black">先攻</a></li>
-      <li><a class="btn_d" href="#white">後攻</a></li>
-    </ul>
-  </Div>
-
-  <Div Align="center">
-    <span id="randkun"><a href="#randkun" class="raised ripple">VS. Randkun</a></span>
-    <span id="semimanabukun"><a href="#semimanabukun" class="raised ripple">VS. Semimanabukun</a></span>
-    <span id="zodiac"><a href="#zodiac" class="raised ripple">VS. Zodiac</a></span>
-    <span id="human"><a href="#human" class="raised ripple">VS. Human</a></span>
-  </Div>
-
-
-
-  <script>
-  (function(){
-    var ripple, ripples, RippleEffect,loc, cover, coversize, style, x, y, i, num;
-
-    //クラス名rippleの要素を取得
-    ripples = document.querySelectorAll('.ripple');
-
-    //位置を取得
-    RippleEffect = function(e){
-      ripple = this; //クリックされたボタンを取得
- 	    cover = document.createElement('span'); //span作る
- 	    coversize = ripple.offsetWidth; //要素の幅を取得
-      loc = ripple.getBoundingClientRect(); //絶対座標の取得
-      x = e.pageX - loc.left - window.pageXOffset - (coversize / 2);
-      y = e.pageY - loc.top - window.pageYOffset - (coversize / 2);
-      pos = 'top:' + y + 'px; left:' + x + 'px; height:' + coversize + 'px; width:' + coversize + 'px;';
-
-      //spanを追加
-      ripple.appendChild(cover);
-      cover.setAttribute('style', pos);
-      cover.setAttribute('class', 'rp-effect'); //クラス名追加
-
-      //しばらくしたらspanを削除
-      setTimeout(function(){
-        var list = document.getElementsByClassName( "rp-effect" ) ;
-        for(var i = list.length - 1; i >= 0; i--){//末尾から順にすべて削除
-    	    list[i].parentNode.removeChild(list[i]);
-        }
-      }, 2000)
-    };
-    for(i = 0, num = ripples.length; i < num; i++){
-      ripple = ripples[i];
-      ripple.addEventListener('mousedown', RippleEffect);
-    }
-  }());
-  </script>
-
-
-
-  <Div Align="center">
-    <h3 class="lines-on-sides"><span id="now"></span></h3>
-  </Div>
+  <!-- <Div Align="center"> -->
+  <!--   <h2><span id="command"></span></h2> -->
+  <!-- </Div> -->
+  <!--  -->
+  <!-- <Div Align="center"> -->
+  <!--   <ul class="nav"> -->
+  <!--     <li><a class="btn_e" href="#black">先攻</a></li> -->
+  <!--     <li><a class="btn_d" href="#white">後攻</a></li> -->
+  <!--   </ul> -->
+  <!-- </Div> -->
+  <!--  -->
+  <!-- <Div Align="center"> -->
+  <!--   <span id="randkun"><a href="#randkun" class="raised ripple">VS. Randkun</a></span> -->
+  <!--   <span id="semimanabukun"><a href="#semimanabukun" class="raised ripple">VS. Semimanabukun</a></span> -->
+  <!--   <span id="zodiac"><a href="#zodiac" class="raised ripple">VS. Zodiac</a></span> -->
+  <!--   <span id="human"><a href="#human" class="raised ripple">VS. Human</a></span> -->
+  <!-- </Div> -->
+  <!--  -->
+  <!--  -->
+  <!--  -->
+  <!-- <script> -->
+  <!-- (function(){ -->
+  <!--   var ripple, ripples, RippleEffect,loc, cover, coversize, style, x, y, i, num; -->
+  <!--  -->
+  <!--   //クラス名rippleの要素を取得 -->
+  <!--   ripples = document.querySelectorAll('.ripple'); -->
+  <!--  -->
+  <!--   //位置を取得 -->
+  <!--   RippleEffect = function(e){ -->
+  <!--     ripple = this; //クリックされたボタンを取得 -->
+ 	<!--     cover = document.createElement('span'); //span作る -->
+ 	<!--     coversize = ripple.offsetWidth; //要素の幅を取得 -->
+  <!--     loc = ripple.getBoundingClientRect(); //絶対座標の取得 -->
+  <!--     x = e.pageX &#45; loc.left &#45; window.pageXOffset &#45; (coversize / 2); -->
+  <!--     y = e.pageY &#45; loc.top &#45; window.pageYOffset &#45; (coversize / 2); -->
+  <!--     pos = 'top:' + y + 'px; left:' + x + 'px; height:' + coversize + 'px; width:' + coversize + 'px;'; -->
+  <!--  -->
+  <!--     //spanを追加 -->
+  <!--     ripple.appendChild(cover); -->
+  <!--     cover.setAttribute('style', pos); -->
+  <!--     cover.setAttribute('class', 'rp&#45;effect'); //クラス名追加 -->
+  <!--  -->
+  <!--     //しばらくしたらspanを削除 -->
+  <!--     setTimeout(function(){ -->
+  <!--       var list = document.getElementsByClassName( "rp&#45;effect" ) ; -->
+  <!--       for(var i = list.length &#45; 1; i >= 0; i&#45;&#45;){//末尾から順にすべて削除 -->
+  <!--   	    list[i].parentNode.removeChild(list[i]); -->
+  <!--       } -->
+  <!--     }, 2000) -->
+  <!--   }; -->
+  <!--   for(i = 0, num = ripples.length; i < num; i++){ -->
+  <!--     ripple = ripples[i]; -->
+  <!--     ripple.addEventListener('mousedown', RippleEffect); -->
+  <!--   } -->
+  <!-- }()); -->
+  <!-- </script> -->
+  <!--  -->
+  <!--  -->
+  <!--  -->
+  <!-- <Div Align="center"> -->
+  <!--   <h3 class="lines&#45;on&#45;sides"><span id="now"></span></h3> -->
+  <!-- </Div> -->
 </head>
 
 
