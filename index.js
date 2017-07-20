@@ -61,9 +61,33 @@ function createCube(r){
   var geometry = new THREE.BoxGeometry(r, r, r);
   var material = new THREE.MeshPhongMaterial({color: 0xFFFFFF});
   var cube = new THREE.Mesh(geometry, material);
+  cube.color = 0;
   cube.position.set(0, 0, 0);
   scene.add(cube);
   return cube;
+}
+
+
+
+function setcolor(color){
+  cube.material.color.setHex(color);
+}
+
+
+
+function cubecolorChange(){
+  var color = cube.color;
+  if(color == 0){
+    setcolor(0xFFFFFF)
+  }else if(color == 1){
+    setcolor(0xFF8000);
+  }else if(color == 2){
+    setcolor(0xFF00FF);
+  }else if(color == 3){
+    setcolor(0x0000FF);
+  }else if(color == 4){
+    setcolor(0x40FF00);
+  }else setcolor(0x00FFFF);
 }
 
 
@@ -80,7 +104,6 @@ function update(){
   controls.update();
   requestAnimationFrame(update);
   renderer.render(scene, camera);
-
   var projector = new THREE.Projector();
   var mouse = {x: 0, y: 0};
 
@@ -123,11 +146,10 @@ function update(){
           // if(controls.autoRotate){
           //   controls.autoRotate = false;
           // }else controls.autoRotate = true;
-          if(obj[0].length > 0){
-
-            alert("cube");
-            //objの色を変更
-
+          if(obj.length > 0){
+            cube.color += 1;
+            if(cube.color > 5){cube.color = 0};
+            cubecolorChange();
           }
         }
       };
